@@ -1,0 +1,363 @@
+using System;
+
+class TextAdventureGame
+{
+    static void Main()
+    {
+        int numberEnd = 0;
+        string start = "";
+        string lucky = "";
+        string bai = "";
+        string burger = "";
+        string ds = "";
+        string roblox = "";
+        string goodDay = "";
+        string punish = "";
+        
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("=== ТЕКСТОВАЯ ИГРА ===");
+            Console.WriteLine("Начать новую игру(G) или выйти посмотреть статистику?(S)");
+            start = Console.ReadLine().ToUpper();
+            
+            if (start == "S")
+            {
+                Console.WriteLine($"\nВы нашли {numberEnd} из 7 концовок");
+                Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                Console.ReadKey();
+            }
+            else if (start == "G")
+            {
+                PlayGame(ref numberEnd, ref lucky, ref bai, ref burger, ref ds, ref roblox, ref goodDay, ref punish);
+            }
+            else
+            {
+                Console.WriteLine("Пожалуйста, введите только S или G.");
+                Console.WriteLine("Нажмите любую клавишу для продолжения...");
+                Console.ReadKey();
+            }
+        }
+    }
+
+    static void PlayGame(ref int numberEnd, ref string lucky, ref string bai, ref string burger, 
+                         ref string ds, ref string roblox, ref string goodDay, ref string punish)
+    {
+        string alarm, shower, clothes, kolleg = "";
+        string fast = "", sleep = "", breakfast = "", phone = "";
+        string transport = "", homework = "", study = "", weather = "";
+        string friends = "", eda = "", food = "", mom = "", computer = "", games = "";
+
+        Console.Clear();
+        Console.WriteLine("=== НОВАЯ ИГРА ===\n");
+
+        // Интеракция 1
+        Console.WriteLine("Вы проснулись в 6:00 утра");
+        Console.WriteLine("Проснуться сразу или поставить будильник еще на 10 минут?");
+        Console.WriteLine("Y - проснуться сразу | N - поспать еще 10 минут");
+        alarm = Console.ReadLine().ToUpper();
+
+        if (alarm == "Y")
+        {
+            Console.WriteLine("Вы бодро встали с постели");
+        }
+        else
+        {
+            Console.WriteLine("Вы проспали еще 10 минут и встали в 6:10");
+        }
+
+        // Интеракция 2
+        Console.WriteLine("\nПринять душ или одеться сразу?");
+        Console.WriteLine("Y - принять душ | N - одеться сразу");
+        shower = Console.ReadLine().ToUpper();
+
+        // Интеракция 3
+        Console.WriteLine("\nКакую одежду надеть?");
+        Console.WriteLine("Y - формальную | N - повседневную");
+        clothes = Console.ReadLine().ToUpper();
+
+        // Интеракция 4
+        Console.WriteLine("\nИдти ли мне сегодня в колледж...");
+        Console.WriteLine("Y - идти в колледж | N - не идти в колледж");
+        string answer = Console.ReadLine().ToUpper();
+
+        if (answer == "Y")
+        {
+            kolleg = "da";
+
+            // Интеракция 5
+            Console.WriteLine("\nВы решили идти в колледж");
+            Console.WriteLine("Что приготовить на завтрак?");
+            Console.WriteLine("Y - яичницу | N - бутерброды");
+            breakfast = Console.ReadLine().ToUpper();
+
+            // Интеракция 6
+            Console.WriteLine("\nСъев завтрак вы посмотрели на часы и увидели 7:00");
+            Console.WriteLine("*В колледже нужно быть через час, а дорога занимает 1 час и 30 минут*");
+            Console.WriteLine("Поторопиться ли мне и не взять портфель что-бы успеть вовремя?");
+            Console.WriteLine("Y - поторопиться и не брать портфель | N - не торопиться и собрать портфель");
+            fast = Console.ReadLine().ToUpper();
+        }
+        else if (answer == "N")
+        {
+            kolleg = "net";
+
+            // Интеракция 7
+            Console.WriteLine("\nВы решили не идти в колледж и остались лежать в постели");
+            Console.WriteLine("Чем заняться в телефоне?");
+            Console.WriteLine("Y - тик-ток | N - ютуб");
+            phone = Console.ReadLine().ToUpper();
+
+            // Интеракция 8
+            Console.WriteLine("\nВдруг усталость нахлынула на вас, ложиться ли спать?");
+            Console.WriteLine("Y - Убрать телефон и лечь спать | N - продолжить листать тик-ток");
+            sleep = Console.ReadLine().ToUpper();
+        }
+        else
+        {
+            Console.WriteLine("Пожалуйста введите только Y или N.");
+            return;
+        }
+
+        if (kolleg == "da")
+        {
+            if (fast == "Y")
+            {
+                HandleFastPath(ref numberEnd, ref lucky, ref bai);
+            }
+            else if (fast == "N")
+            {
+                HandleSlowPath(ref numberEnd, ref burger, ref ds);
+            }
+        }
+        else if (kolleg == "net")
+        {
+            if (sleep == "Y")
+            {
+                HandleSleepPath(ref numberEnd, ref roblox, ref goodDay);
+            }
+            else if (sleep == "N")
+            {
+                HandleNoSleepPath(ref numberEnd, ref punish);
+            }
+        }
+
+        Console.WriteLine("\n=== КОНЕЦ ИГРЫ ===");
+        Console.WriteLine("Нажмите любую клавишу для возврата в меню...");
+        Console.ReadKey();
+    }
+
+    static void HandleFastPath(ref int numberEnd, ref string lucky, ref string bai)
+    {
+        // Интеракция 9
+        Console.WriteLine("\nНа чем поехать в колледж?");
+        Console.WriteLine("Y - на маршрутке | N - на такси");
+        string transport = Console.ReadLine().ToUpper();
+
+        // Интеракция 10
+        Console.WriteLine("\nВы добежали до остановки и доехали до метро");
+        Console.WriteLine("В метро предложили помощь с учебой, согласиться?");
+        Console.WriteLine("Y - да | N - нет");
+        string study = Console.ReadLine().ToUpper();
+
+        Console.WriteLine("\nВремя 7:55, вы успели прийти в колледж");
+        Console.WriteLine("Зайдя в кабинет вы вспомнили, что не взяли с собой портфель");
+        Console.WriteLine("*Первая пара Александра Сергеевича Рыбакова*");
+        Console.WriteLine("Вы забыли домашнее задание дома");
+
+        // Интеракция 11
+        Console.WriteLine("\nСказать правду преподавателю или придумать оправдание?");
+        Console.WriteLine("Y - сказать правду | N - придумать оправдание");
+        string homework = Console.ReadLine().ToUpper();
+
+        Console.WriteLine("\nПара началась, Александр Сергеевич Рыбаков проверяет д/з");
+        Console.WriteLine("Очередь доходит до вас, он видит, что вы не сделали д/з");
+
+        if (homework == "Y")
+        {
+            Console.WriteLine("\nВы честно рассказали ситуацию, преподаватель дал шанс исправиться");
+            Console.WriteLine("Он уходит проверять другие д/з у других ребят");
+            Console.WriteLine("=== Концовка: Ооо повезло повезло ===");
+            
+            if (lucky != "Y")
+            {
+                lucky = "Y";
+                numberEnd += 1;
+            }
+        }
+        else
+        {
+            Console.WriteLine("\nВы придумали оправдание, но преподаватель не поверил");
+            Console.WriteLine("Он прописывает вам print(*пока дура*) и 2 в журнал");
+            Console.WriteLine("=== Концовка: Пока дура ===");
+            
+            if (bai != "Y")
+            {
+                bai = "Y";
+                numberEnd += 1;
+            }
+        }
+    }
+
+    static void HandleSlowPath(ref int numberEnd, ref string burger, ref string ds)
+    {
+        // Интеракция 12
+        Console.WriteLine("\nТы неспеша доел завтрак и собрали портфель с д/з");
+        Console.WriteLine("Посмотреть погоду перед выходом?");
+        Console.WriteLine("Y - да | N - нет");
+        string weather = Console.ReadLine().ToUpper();
+
+        // Интеракция 13
+        Console.WriteLine("\nВы дошли до остановки и маршрутка уехала без вас");
+        Console.WriteLine("Ждать следующую или пойти пешком?");
+        Console.WriteLine("Y - ждать | N - идти пешком");
+        string transport = Console.ReadLine().ToUpper();
+
+        Console.WriteLine("\nВремя 9:30, вы опоздали в колледж");
+        Console.WriteLine("*Первая пара Александра Сергеевича Рыбакова*");
+        Console.WriteLine("Вы извинились за опозданиие и сели за парту");
+
+        // Интеракция 14
+        Console.WriteLine("\nДрузья предлагают сходить в столовую вместо пары, согласиться?");
+        Console.WriteLine("Y - да | N - нет");
+        string friends = Console.ReadLine().ToUpper();
+
+        string eda = "";
+        if (friends == "Y")
+        {
+            Console.WriteLine("\nВы пошли с друзьями в столовую и пропустили пару");
+            eda = "N";
+        }
+        else
+        {
+            // Интеракция 15
+            Console.WriteLine("\nКонец пары, попросить у преподователя проверить д/з или пойти на обед?");
+            Console.WriteLine("Y - показать домашку и опоздать на обед | N - забить на домашку и пойти на обед");
+            eda = Console.ReadLine().ToUpper();
+        }
+
+        if (eda == "Y")
+        {
+            // Интеракция 16
+            Console.WriteLine("\nВы показали домашнее задание");
+            Console.WriteLine("Александр Сергеевич Рыбаков проверил ваше домашнее задание, поставил вам *король одобряет* вы счастливы");
+            Console.WriteLine("Вы спустились вниз и увидели большую очередь на обед");
+            Console.WriteLine("Ждать в очереди или купить еду в автомате?");
+            Console.WriteLine("Y - ждать в очереди | N - купить в автомате");
+            string money = Console.ReadLine().ToUpper();
+
+            Console.WriteLine("=== Концовка: Без бургера :с ===");
+            
+            if (burger != "Y")
+            {
+                burger = "Y";
+                numberEnd += 1;
+            }
+        }
+        else if (eda == "N")
+        {
+            // Интеракция 17
+            Console.WriteLine("\nВы решили не показывать домашнее задание и побежали на обед");
+            Console.WriteLine("Что взять на обед?");
+            Console.WriteLine("Y - бургер | N - салат");
+            string food = Console.ReadLine().ToUpper();
+
+            Console.WriteLine("\nВы скушали еду и вам стало плохо. Еда была плохой");
+            Console.WriteLine("=== Концовка: Лучше бы показал домашку ===");
+            
+            if (ds != "Y")
+            {
+                ds = "Y";
+                numberEnd += 1;
+            }
+        }
+    }
+
+    static void HandleSleepPath(ref int numberEnd, ref string roblox, ref string goodDay)
+    {
+        // Интеракция 18
+        Console.WriteLine("\nВ комнату зашла мама и увидела как вы спите");
+        Console.WriteLine("Разбудить вас или дать поспать?");
+        Console.WriteLine("Y - разбудить | N - дать поспать");
+        string mom = Console.ReadLine().ToUpper();
+
+        if (mom == "Y")
+        {
+            Console.WriteLine("\nМама разбудила вас и заставила делать домашние дела");
+        }
+        else
+        {
+            Console.WriteLine("\nМама решила вас не будить и вы проспали до утра");
+        }
+
+        Console.WriteLine("\nВы проснулись в 12:00");
+
+        // Интеракция 19
+        Console.WriteLine("\nВключить компьютер или заняться чем-то полезным?");
+        Console.WriteLine("Y - включить компьютер | N - заняться полезным");
+        string computer = Console.ReadLine().ToUpper();
+
+        if (computer == "Y")
+        {
+            Console.WriteLine("\nВы включили компьютер");
+            Console.WriteLine("Во что поиграть?");
+            Console.WriteLine("Y - роблокс | N - другие игры");
+            string games = Console.ReadLine().ToUpper();
+
+            Console.WriteLine("=== Концовка: Ура роблокс ===");
+            
+            if (roblox != "Y")
+            {
+                roblox = "Y";
+                numberEnd += 1;
+            }
+        }
+        else
+        {
+            Console.WriteLine("\nВы занялись саморазвитием");
+            Console.WriteLine("=== Концовка: Полезный день ===");
+            
+            if (goodDay != "Y")
+            {
+                goodDay = "Y";
+                numberEnd += 1;
+            }
+        }
+    }
+
+    static void HandleNoSleepPath(ref int numberEnd, ref string punish)
+    {
+        // Интеракция 20
+        Console.WriteLine("\nВы дальше сидите в телефоне");
+        Console.WriteLine("Появилось сообщение от друга, ответить?");
+        Console.WriteLine("Y - да | N - нет");
+        string friends = Console.ReadLine().ToUpper();
+
+        Console.WriteLine("\nВ комнату заходит мама");
+        Console.WriteLine("Она на вас кричит");
+
+        // Интеракция 21
+        Console.WriteLine("\nИзвиниться или спорить?");
+        Console.WriteLine("Y - извиниться | N - спорить");
+        string mom = Console.ReadLine().ToUpper();
+
+        if (mom == "Y")
+        {
+            Console.WriteLine("\nВы извинились и мама смягчила наказание");
+            Console.WriteLine("Без компьютера 2 недели");
+        }
+        else
+        {
+            Console.WriteLine("\nВы начали спорить и ситуация ухудшилась");
+            Console.WriteLine("Вы были наказаны, без компьютера 1 месяц");
+        }
+
+        Console.WriteLine("=== Концовка: Наказан ===");
+        
+        if (punish != "Y")
+        {
+            punish = "Y";
+            numberEnd += 1;
+        }
+    }
+}
