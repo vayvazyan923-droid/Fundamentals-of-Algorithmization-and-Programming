@@ -2,4 +2,4 @@
 ## Лабораторная работа 2 https://github.com/vayvazyan923-droid/Fundamentals-of-Algorithmization-and-Programming/blob/main/2.%20Условные%20конструкции.pdf
 ## Лабораторная работа 3 https://github.com/vayvazyan923-droid/Fundamentals-of-Algorithmization-and-Programming/blob/main/3.%20Циклы.pdf
 ## Лабораторная работа 4 https://github.com/vayvazyan923-droid/Fundamentals-of-Algorithmization-and-Programming/blob/main/4.Массивы.pdf
-## ДЗ 
+## ДЗ https://github.com/vayvazyan923-droid/Fundamentals-of-Algorithmization-and-Programming/blob/main/Дз-основы-алг-и-прогр.pdf
