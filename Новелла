@@ -1,363 +1,587 @@
 using System;
 
+namespace ConsoleApp12
+{
+{
+// 1.1 Student
+class Student
+{
+public string name;
+}
+
+// 1.2 Car
+class Car
+{
+public int year;
+}
+
+// 1.3 Point
+class Point
+{
+public int x;
+}
+
+// 1.4 Person
+class Person
+{
+private int age;
+
+public Person(int age)
+{
+this.age = age;
+}
+
+public void Print()
+{
+Console.WriteLine($"Age: {age}");
+}
+}
+
+// 1.5 Table
+class Table
+{
+private int rows;
+private int cols;
+
+public Table(int rows, int cols)
+{
+this.rows = rows;
+this.cols = cols;
+}
+
+public void Display()
+{
+Console.WriteLine($"Rows: {rows}, Cols: {cols}");
+}
+}
+
+// 1.6 Manager
+class Manager
+{
+private int age;
+private string name;
+
+public Manager(int age, string name)
+{
+this.age = age;
+this.name = name;
+}
+
+public int GetAge()
+{
+return age;
+}
+
+public string GetName()
+{
+return name;
+}
+}
+
+// 1.7 Point3D
+class Point3D
+{
+private int x, y, z;
+
+public Point3D(int x, int y, int z)
+{
+this.x = x;
+this.y = y;
+this.z = z;
+}
+
+public void Show()
+{
+Console.WriteLine($"X: {x}, Y: {y}, Z: {z}");
+}
+}
+
+// 1.8 Shop (в задании опечатка Shor)
+class Shop
+{
+private string name;
+
+public Shop(string name)
+{
+this.name = name;
+}
+
+public string GetName()
+{
+return name;
+}
+
+public void SetName(string newName)
+{
+name = newName;
+}
+}
+
 class Program
 {
-    static void Main()
+static void Main(string[] args)
+{
+Student s = new Student { name = "Vagan" };
+Car car = new Car { year = 2006 };
+Point p = new Point { x = 5 };
+
+Person person = new Person(20);
+person.Print();
+
+Table table = new Table(3, 4);
+table.Display();
+
+Manager manager = new Manager(40, "Alex");
+Console.WriteLine($"Manager: {manager.GetName()}, Age: {manager.GetAge()}");
+
+Point3D point3D = new Point3D(1, 2, 3);
+point3D.Show();
+
+Shop shop = new Shop("My Shop");
+Console.WriteLine(shop.GetName());
+shop.SetName("New Shop");
+Console.WriteLine(shop.GetName());
+}
+}
+}
+ 2
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp5
+{
+    // 1.1. Класс Student
+    class Student
     {
-        int numberEnd = 0;
-        string start = "";
-        string lucky = "";
-        string bai = "";
-        string burger = "";
-        string ds = "";
-        string roblox = "";
-        string goodDay = "";
-        string punish = "";
-        
-        while (true)
+        public string name; 
+    }
+
+    // 1.2. Класс Car
+    class Car
+    {
+        public int year; 
+    }
+
+    // 1.3. Класс Point
+    class Point
+    {
+        public int x; 
+    }
+
+    // 1.4. Класс Person
+    class Person
+    {
+        public int age; 
+
+        public void Print()
         {
-            Console.Clear();
-            Console.WriteLine("=== ТЕКСТОВАЯ ИГРА ===");
-            Console.WriteLine("Начать новую игру(G) или выйти посмотреть статистику?(S)");
-            start = Console.ReadLine().ToUpper();
-            
-            if (start == "S")
-            {
-                Console.WriteLine($"\nВы нашли {numberEnd} из 7 концовок");
-                Console.WriteLine("\nНажмите любую клавишу для продолжения...");
-                Console.ReadKey();
-            }
-            else if (start == "G")
-            {
-                PlayGame(ref numberEnd, ref lucky, ref bai, ref burger, ref ds, ref roblox, ref goodDay, ref punish);
-            }
-            else
-            {
-                Console.WriteLine("Пожалуйста, введите только S или G.");
-                Console.WriteLine("Нажмите любую клавишу для продолжения...");
-                Console.ReadKey();
-            }
+            Console.WriteLine($"Возраст: {age}");
         }
     }
 
-    static void PlayGame(ref int numberEnd, ref string lucky, ref string bai, ref string burger, 
-                         ref string ds, ref string roblox, ref string goodDay, ref string punish)
+    // 1.5. Класс Table
+    class Table
     {
-        string alarm, shower, clothes, kolleg = "";
-        string fast = "", sleep = "", breakfast = "", phone = "";
-        string transport = "", homework = "", study = "", weather = "";
-        string friends = "", eda = "", food = "", mom = "", computer = "", games = "";
+        public int rows; 
+        public int cols; 
 
-        Console.Clear();
-        Console.WriteLine("=== НОВАЯ ИГРА ===\n");
-
-        // Интеракция 1
-        Console.WriteLine("Вы проснулись в 6:00 утра");
-        Console.WriteLine("Проснуться сразу или поставить будильник еще на 10 минут?");
-        Console.WriteLine("Y - проснуться сразу | N - поспать еще 10 минут");
-        alarm = Console.ReadLine().ToUpper();
-
-        if (alarm == "Y")
+        public void Display()
         {
-            Console.WriteLine("Вы бодро встали с постели");
-        }
-        else
-        {
-            Console.WriteLine("Вы проспали еще 10 минут и встали в 6:10");
-        }
-
-        // Интеракция 2
-        Console.WriteLine("\nПринять душ или одеться сразу?");
-        Console.WriteLine("Y - принять душ | N - одеться сразу");
-        shower = Console.ReadLine().ToUpper();
-
-        // Интеракция 3
-        Console.WriteLine("\nКакую одежду надеть?");
-        Console.WriteLine("Y - формальную | N - повседневную");
-        clothes = Console.ReadLine().ToUpper();
-
-        // Интеракция 4
-        Console.WriteLine("\nИдти ли мне сегодня в колледж...");
-        Console.WriteLine("Y - идти в колледж | N - не идти в колледж");
-        string answer = Console.ReadLine().ToUpper();
-
-        if (answer == "Y")
-        {
-            kolleg = "da";
-
-            // Интеракция 5
-            Console.WriteLine("\nВы решили идти в колледж");
-            Console.WriteLine("Что приготовить на завтрак?");
-            Console.WriteLine("Y - яичницу | N - бутерброды");
-            breakfast = Console.ReadLine().ToUpper();
-
-            // Интеракция 6
-            Console.WriteLine("\nСъев завтрак вы посмотрели на часы и увидели 7:00");
-            Console.WriteLine("*В колледже нужно быть через час, а дорога занимает 1 час и 30 минут*");
-            Console.WriteLine("Поторопиться ли мне и не взять портфель что-бы успеть вовремя?");
-            Console.WriteLine("Y - поторопиться и не брать портфель | N - не торопиться и собрать портфель");
-            fast = Console.ReadLine().ToUpper();
-        }
-        else if (answer == "N")
-        {
-            kolleg = "net";
-
-            // Интеракция 7
-            Console.WriteLine("\nВы решили не идти в колледж и остались лежать в постели");
-            Console.WriteLine("Чем заняться в телефоне?");
-            Console.WriteLine("Y - тик-ток | N - ютуб");
-            phone = Console.ReadLine().ToUpper();
-
-            // Интеракция 8
-            Console.WriteLine("\nВдруг усталость нахлынула на вас, ложиться ли спать?");
-            Console.WriteLine("Y - Убрать телефон и лечь спать | N - продолжить листать тик-ток");
-            sleep = Console.ReadLine().ToUpper();
-        }
-        else
-        {
-            Console.WriteLine("Пожалуйста введите только Y или N.");
-            return;
-        }
-
-        if (kolleg == "da")
-        {
-            if (fast == "Y")
-            {
-                HandleFastPath(ref numberEnd, ref lucky, ref bai);
-            }
-            else if (fast == "N")
-            {
-                HandleSlowPath(ref numberEnd, ref burger, ref ds);
-            }
-        }
-        else if (kolleg == "net")
-        {
-            if (sleep == "Y")
-            {
-                HandleSleepPath(ref numberEnd, ref roblox, ref goodDay);
-            }
-            else if (sleep == "N")
-            {
-                HandleNoSleepPath(ref numberEnd, ref punish);
-            }
-        }
-
-        Console.WriteLine("\n=== КОНЕЦ ИГРЫ ===");
-        Console.WriteLine("Нажмите любую клавишу для возврата в меню...");
-        Console.ReadKey();
-    }
-
-    static void HandleFastPath(ref int numberEnd, ref string lucky, ref string bai)
-    {
-        // Интеракция 9
-        Console.WriteLine("\nНа чем поехать в колледж?");
-        Console.WriteLine("Y - на маршрутке | N - на такси");
-        string transport = Console.ReadLine().ToUpper();
-
-        // Интеракция 10
-        Console.WriteLine("\nВы добежали до остановки и доехали до метро");
-        Console.WriteLine("В метро предложили помощь с учебой, согласиться?");
-        Console.WriteLine("Y - да | N - нет");
-        string study = Console.ReadLine().ToUpper();
-
-        Console.WriteLine("\nВремя 7:55, вы успели прийти в колледж");
-        Console.WriteLine("Зайдя в кабинет вы вспомнили, что не взяли с собой портфель");
-        Console.WriteLine("*Первая пара Александра Сергеевича Рыбакова*");
-        Console.WriteLine("Вы забыли домашнее задание дома");
-
-        // Интеракция 11
-        Console.WriteLine("\nСказать правду преподавателю или придумать оправдание?");
-        Console.WriteLine("Y - сказать правду | N - придумать оправдание");
-        string homework = Console.ReadLine().ToUpper();
-
-        Console.WriteLine("\nПара началась, Александр Сергеевич Рыбаков проверяет д/з");
-        Console.WriteLine("Очередь доходит до вас, он видит, что вы не сделали д/з");
-
-        if (homework == "Y")
-        {
-            Console.WriteLine("\nВы честно рассказали ситуацию, преподаватель дал шанс исправиться");
-            Console.WriteLine("Он уходит проверять другие д/з у других ребят");
-            Console.WriteLine("=== Концовка: Ооо повезло повезло ===");
-            
-            if (lucky != "Y")
-            {
-                lucky = "Y";
-                numberEnd += 1;
-            }
-        }
-        else
-        {
-            Console.WriteLine("\nВы придумали оправдание, но преподаватель не поверил");
-            Console.WriteLine("Он прописывает вам print(*пока дура*) и 2 в журнал");
-            Console.WriteLine("=== Концовка: Пока дура ===");
-            
-            if (bai != "Y")
-            {
-                bai = "Y";
-                numberEnd += 1;
-            }
+            Console.WriteLine($"Строки: {rows}, Столбцы: {cols}");
         }
     }
 
-    static void HandleSlowPath(ref int numberEnd, ref string burger, ref string ds)
+    // 1.6. Класс Manager
+    class Manager
     {
-        // Интеракция 12
-        Console.WriteLine("\nТы неспеша доел завтрак и собрали портфель с д/з");
-        Console.WriteLine("Посмотреть погоду перед выходом?");
-        Console.WriteLine("Y - да | N - нет");
-        string weather = Console.ReadLine().ToUpper();
+        private int age; 
+        private string name; 
 
-        // Интеракция 13
-        Console.WriteLine("\nВы дошли до остановки и маршрутка уехала без вас");
-        Console.WriteLine("Ждать следующую или пойти пешком?");
-        Console.WriteLine("Y - ждать | N - идти пешком");
-        string transport = Console.ReadLine().ToUpper();
-
-        Console.WriteLine("\nВремя 9:30, вы опоздали в колледж");
-        Console.WriteLine("*Первая пара Александра Сергеевича Рыбакова*");
-        Console.WriteLine("Вы извинились за опозданиие и сели за парту");
-
-        // Интеракция 14
-        Console.WriteLine("\nДрузья предлагают сходить в столовую вместо пары, согласиться?");
-        Console.WriteLine("Y - да | N - нет");
-        string friends = Console.ReadLine().ToUpper();
-
-        string eda = "";
-        if (friends == "Y")
+        public Manager(int age, string name)
         {
-            Console.WriteLine("\nВы пошли с друзьями в столовую и пропустили пару");
-            eda = "N";
-        }
-        else
-        {
-            // Интеракция 15
-            Console.WriteLine("\nКонец пары, попросить у преподователя проверить д/з или пойти на обед?");
-            Console.WriteLine("Y - показать домашку и опоздать на обед | N - забить на домашку и пойти на обед");
-            eda = Console.ReadLine().ToUpper();
+            this.age = age;
+            this.name = name;
         }
 
-        if (eda == "Y")
+        public int GetAge()
         {
-            // Интеракция 16
-            Console.WriteLine("\nВы показали домашнее задание");
-            Console.WriteLine("Александр Сергеевич Рыбаков проверил ваше домашнее задание, поставил вам *король одобряет* вы счастливы");
-            Console.WriteLine("Вы спустились вниз и увидели большую очередь на обед");
-            Console.WriteLine("Ждать в очереди или купить еду в автомате?");
-            Console.WriteLine("Y - ждать в очереди | N - купить в автомате");
-            string money = Console.ReadLine().ToUpper();
-
-            Console.WriteLine("=== Концовка: Без бургера :с ===");
-            
-            if (burger != "Y")
-            {
-                burger = "Y";
-                numberEnd += 1;
-            }
+            return age;
         }
-        else if (eda == "N")
-        {
-            // Интеракция 17
-            Console.WriteLine("\nВы решили не показывать домашнее задание и побежали на обед");
-            Console.WriteLine("Что взять на обед?");
-            Console.WriteLine("Y - бургер | N - салат");
-            string food = Console.ReadLine().ToUpper();
 
-            Console.WriteLine("\nВы скушали еду и вам стало плохо. Еда была плохой");
-            Console.WriteLine("=== Концовка: Лучше бы показал домашку ===");
-            
-            if (ds != "Y")
-            {
-                ds = "Y";
-                numberEnd += 1;
-            }
+        public string GetName()
+        {
+            return name;
         }
     }
 
-    static void HandleSleepPath(ref int numberEnd, ref string roblox, ref string goodDay)
+    // 1.7. Класс Point3D
+    class Point3D
     {
-        // Интеракция 18
-        Console.WriteLine("\nВ комнату зашла мама и увидела как вы спите");
-        Console.WriteLine("Разбудить вас или дать поспать?");
-        Console.WriteLine("Y - разбудить | N - дать поспать");
-        string mom = Console.ReadLine().ToUpper();
+        public int x; 
+        public int y; 
+        public int z; 
 
-        if (mom == "Y")
+        public void Show()
         {
-            Console.WriteLine("\nМама разбудила вас и заставила делать домашние дела");
-        }
-        else
-        {
-            Console.WriteLine("\nМама решила вас не будить и вы проспали до утра");
-        }
-
-        Console.WriteLine("\nВы проснулись в 12:00");
-
-        // Интеракция 19
-        Console.WriteLine("\nВключить компьютер или заняться чем-то полезным?");
-        Console.WriteLine("Y - включить компьютер | N - заняться полезным");
-        string computer = Console.ReadLine().ToUpper();
-
-        if (computer == "Y")
-        {
-            Console.WriteLine("\nВы включили компьютер");
-            Console.WriteLine("Во что поиграть?");
-            Console.WriteLine("Y - роблокс | N - другие игры");
-            string games = Console.ReadLine().ToUpper();
-
-            Console.WriteLine("=== Концовка: Ура роблокс ===");
-            
-            if (roblox != "Y")
-            {
-                roblox = "Y";
-                numberEnd += 1;
-            }
-        }
-        else
-        {
-            Console.WriteLine("\nВы занялись саморазвитием");
-            Console.WriteLine("=== Концовка: Полезный день ===");
-            
-            if (goodDay != "Y")
-            {
-                goodDay = "Y";
-                numberEnd += 1;
-            }
+            Console.WriteLine($"Point3D: X={x}, Y={y}, Z={z}");
         }
     }
 
-    static void HandleNoSleepPath(ref int numberEnd, ref string punish)
+    // 1.8. Класс Shop
+    class Shop
     {
-        // Интеракция 20
-        Console.WriteLine("\nВы дальше сидите в телефоне");
-        Console.WriteLine("Появилось сообщение от друга, ответить?");
-        Console.WriteLine("Y - да | N - нет");
-        string friends = Console.ReadLine().ToUpper();
+        private string name; 
 
-        Console.WriteLine("\nВ комнату заходит мама");
-        Console.WriteLine("Она на вас кричит");
-
-        // Интеракция 21
-        Console.WriteLine("\nИзвиниться или спорить?");
-        Console.WriteLine("Y - извиниться | N - спорить");
-        string mom = Console.ReadLine().ToUpper();
-
-        if (mom == "Y")
+        public Shop(string name)
         {
-            Console.WriteLine("\nВы извинились и мама смягчила наказание");
-            Console.WriteLine("Без компьютера 2 недели");
-        }
-        else
-        {
-            Console.WriteLine("\nВы начали спорить и ситуация ухудшилась");
-            Console.WriteLine("Вы были наказаны, без компьютера 1 месяц");
+            this.name = name;
         }
 
-        Console.WriteLine("=== Концовка: Наказан ===");
-        
-        if (punish != "Y")
+        public string GetName()
         {
-            punish = "Y";
-            numberEnd += 1;
+            return name;
+        }
+
+        public void SetName(string newName)
+        {
+            name = newName;
         }
     }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("=== Демонстрация работы всех классов ===\n");
+
+            // 2.1. Student
+            Console.WriteLine("1. Класс Student:");
+            Student student = new Student();
+            student.name = "Ваган Арменович";
+            Console.WriteLine($"Имя студента: {student.name}\n");
+
+            // 2.2. Car
+            Console.WriteLine("2. Класс Car:");
+            Car car = new Car();
+            car.year = 2026;
+            Console.WriteLine($"Год выпуска автомобиля: {car.year}\n");
+
+            // 2.3. Point
+            Console.WriteLine("3. Класс Point:");
+            Point point = new Point();
+            point.x = 10;
+            Console.WriteLine($"Координата X точки: {point.x}\n");
+
+            // 2.4. Person
+            Console.WriteLine("4. Класс Person:");
+            Person person = new Person();
+            person.age = 19;
+            Console.Write("Возраст персоны: ");
+            person.Print();
+            Console.WriteLine();
+
+            // 2.5. Table
+            Console.WriteLine("5. Класс Table:");
+            Table table = new Table();
+            table.rows = 5;
+            table.cols = 3;
+            Console.Write("Параметры таблицы: ");
+            table.Display();
+            Console.WriteLine();
+
+            // 2.6. Manager
+            Console.WriteLine("6. Класс Manager:");
+            Manager manager = new Manager(19, "Ваган Айвазян");
+            Console.WriteLine($"Менеджер: {manager.GetName()}");
+            Console.WriteLine($"Возраст менеджера: {manager.GetAge()}\n");
+
+            // 2.7. Point3D
+            Console.WriteLine("7. Класс Point3D:");
+            Point3D point3d = new Point3D();
+            point3d.x = 1;
+            point3d.y = 2;
+            point3d.z = 3;
+            Console.Write("Координаты 3D точки: ");
+            point3d.Show();
+            Console.WriteLine();
+
+            // 2.8. Shop
+            Console.WriteLine("8. Класс Shop:");
+            Shop shop = new Shop("Продуктовый магазин");
+            Console.WriteLine($"Название магазина: {shop.GetName()}");
+            shop.SetName("Супермаркет 'Окей'");
+            Console.WriteLine($"Новое название магазина: {shop.GetName()}\n");
+
+            Console.WriteLine("Нажмите любую клавишу для выхода...");
+            Console.ReadKey();
+        }
+    }
+}
+
+
+//3
+
+namespace ConsoleApp12
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        { 
+            class Student
+        {
+            public string Name { get; set; }
+        }
+         }
+
+        // 3.2
+        class Child
+        {
+            public int Age { get; set; }
+
+            public Child() { }
+        }
+
+        // 3.3 
+        class CarYear
+        {
+            private int year;
+
+            public int Year
+            {
+                get { return year; }
+                set
+                {
+                    if (value > 0)
+                        year = value;
+                }
+            }
+
+            public CarYear() { }
+        }
+
+        // 3.4 
+        class Car
+        {
+            public string Name { get; set; }
+            public string Color { get; set; }
+
+            public Car() { }
+        }
+
+        // 3.5
+        class Product
+        {
+            protected string name;
+
+            public string Name
+            {
+                get { return name; }
+            }
+
+            public Product()
+            {
+                name = "Ваган";
+            }
+//4.1
+class Person
+{
+public string Name { get; set; }
+}
+
+class Student : Person
+{
+public int Course { get; set; }
+}
+// 4.2
+class Animal
+{
+public string Name { get; set; }
+}
+
+class Cat : Animal
+{
+public void Meow()
+{
+Console.WriteLine("Meow");
+}
+}
+
+class Dog : Animal
+{
+public void Bark()
+{
+Console.WriteLine("Woof");
+}
+}
+// 4.3
+class Entity
+{
+public int Id { get; set; }
+}
+
+class Product : Entity
+{
+public string Name { get; set; }
+}
+// 4.4
+class Dishes
+{
+public string Material { get; set; }
+}
+
+class Cup : Dishes
+{
+public int Volume { get; set; }
+}
+// 4.5
+class EntityBase
+{
+public int Id { get; set; }
+}
+
+class Staff : EntityBase
+{
+public string Position { get; set; }
+}
+
+class Manager : Staff
+{
+public string Department { get; set; }
+}
+// 4.6
+class AnimalBase
+{
+protected int age;
+}
+
+class Predator : AnimalBase
+{
+public void SetAge(int value)
+{
+age = value;
+}
+
+public void ShowAge()
+{
+Console.WriteLine(age);
+}
+}
+
+// 4.7
+class Transport
+{
+private string name;
+
+public string Name
+{
+get { return name; }
+set { name = value; }
+}
+}
+
+class SpaceShuttle : Transport
+{
+public void Show()
+{
+Console.WriteLine(Name);
+}
+}
+// 5.1
+class Strategy
+{
+public virtual void Display()
+{
+Console.WriteLine("Strategy");
+}
+}
+// 5.2
+class Weather
+{
+public virtual void Show()
+{
+Console.WriteLine("My Weather");
+}
+}
+// 5.3
+class StrategyBase
+{
+public virtual void Display()
+{
+Console.WriteLine("Strategy");
+}
+}
+
+class ConservativeStrategy : StrategyBase
+{
+public override void Display()
+{
+Console.WriteLine("Conservative Strategy");
+}
+}
+
+
+// 5.4
+class Animal
+{
+private string type;
+
+public Animal()
+{
+type = "My Type";
+}
+
+public virtual void Print()
+{
+Console.WriteLine(type);
+}
+}
+
+class Cat : Animal
+{
+private int age;
+
+public Cat()
+{
+age = 5;
+}
+
+public override void Print()
+{
+Console.WriteLine(age);
+}
+}
+// 5.5
+abstract class Entity
+{
+public abstract void Display();
+}
+
+// 5.6
+abstract class EntityBase
+{
+public abstract void Display();
+}
+
+class Product : EntityBase
+{
+public override void Display()
+{
+Console.WriteLine("My Product");
+}
+}
+// 5.7
+interface IPrintable
+{
+void Display();
+}
+
+class ConsolePrinting : IPrintable
+{
+public void Display()
+{
+Console.WriteLine("My Console");
+}
 }
